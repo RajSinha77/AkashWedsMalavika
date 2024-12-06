@@ -39,11 +39,21 @@ var x = setInterval(function() {
 // Play audio immediately after the page loads
 document.addEventListener("DOMContentLoaded", function() {
     var audio = document.getElementById("my_audio");
-    audio.muted = true; // Initially muted to bypass autoplay restriction
+    audio.preload = "auto"; // Preload the audio file
+
+    audio.addEventListener('canplaythrough', function() {
+        audio.muted = false; // Unmute after the audio is ready to play
+        audio.play().catch(error => {
+            console.error("Autoplay failed due to browser restrictions:", error);
+        });
+    });
+
+    // Initially muted to bypass autoplay restriction
+    audio.muted = true;
     audio.play().then(() => {
-        audio.muted = false; // Unmute after the audio starts playing
+        console.log("Audio playback started successfully.");
     }).catch(error => {
-        console.error("Autoplay failed due to browser restrictions:", error);
+        console.error("Initial attempt to play audio failed due to browser restrictions:", error);
     });
 });
 
