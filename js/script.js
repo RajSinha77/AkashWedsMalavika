@@ -36,6 +36,17 @@ var x = setInterval(function() {
     }
 }, 1000);
 
+// Play audio immediately after the page loads
+document.addEventListener("DOMContentLoaded", function() {
+    var audio = document.getElementById("my_audio");
+    audio.muted = true; // Initially muted to bypass autoplay restriction
+    audio.play().then(() => {
+        audio.muted = false; // Unmute after the audio starts playing
+    }).catch(error => {
+        console.error("Autoplay failed due to browser restrictions:", error);
+    });
+});
+
 // Console messages for a fun touch
 var styles = [
     'background: linear-gradient(#D33106, #571402)',
