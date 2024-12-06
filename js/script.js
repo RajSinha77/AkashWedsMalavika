@@ -1,5 +1,5 @@
 /**
- * @author Qazi Maaz Arshad <qazimaazarshad@gmail.com>
+ * @author Raj Sinha <akashsinha3008@gmail.com>
  */
 (function ($) {
     "use strict";
@@ -12,7 +12,7 @@ $(document).on('click', function(){
 });
 
 // Set the date we're counting down to
-var countDownDate = new Date("Dec 18, 2022 18:00:00").getTime();
+var countDownDate = new Date("January 26, 2025 18:00:00").getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {
@@ -71,9 +71,9 @@ var styles2 = [
     , 'font-size: 32px'
 ].join(';');
 
-console.log('\n\n%c SAVE THE DATE: 29th Nov, 2020!', styles);
+console.log('\n\n%c SAVE THE DATE: 26th January, 2025!', styles);
 
-console.log('%cYour presence is requested!%c\n\nRegards: Vinit Shahdeo', styles1, styles2);
+console.log('%cYour presence is requested!%c\n\nRegards: Raj Sinha', styles1, styles2);
 
 console.log(
     `%cShaadi me zaroor aana!\n\n`,
