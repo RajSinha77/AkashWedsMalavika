@@ -36,24 +36,17 @@ var x = setInterval(function() {
     }
 }, 1000);
 
-// Attempt to play audio immediately after the page loads
-document.addEventListener("DOMContentLoaded", function() {
-    var audio = document.getElementById("my_audio");
-    audio.preload = "auto"; // Preload the audio file
-
-    audio.play().then(() => {
-        console.log("Audio playback started successfully.");
-    }).catch(error => {
-        console.error("Autoplay failed due to browser restrictions. Waiting for user interaction...", error);
-        // Add a click event listener to unmute and play audio after user interaction
-        document.body.addEventListener("click", function() {
-            audio.play().then(() => {
-                console.log("Audio playback started after user interaction.");
-            }).catch(err => {
-                console.error("Failed to play audio after user interaction:", err);
-            });
-        }, { once: true }); // Event will be triggered only once
-    });
+// Play audio immediately after the page loads
+document.addEventListener("DOMContentLoaded", function () {
+    const audio = document.getElementById("my_audio");
+    audio.muted = true; // Start muted to allow autoplay without restrictions
+    audio.play()
+        .then(() => {
+            audio.muted = false; // Unmute once it starts playing
+        })
+        .catch((error) => {
+            console.error("Autoplay blocked by browser. Interaction required:", error);
+        });
 });
 
 // Console messages for a fun touch
